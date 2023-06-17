@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ImageDisplay from './components/ImageDisplay';
+import TextInput from './components/TextInput';
+//import TextOutput from './components/TextOutput';
+//import ImageEditor from './components/ImageEditor';
+import DownloadButton from './components/DownloadButton';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [firstText, changeFirstText] = useState('');
+  const [secondText, changeSecondText] = useState('');
+  //const [editedImage, setEditedImage] = useState('');
+  const displayText = firstText + '다, ' + secondText + '아!';
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>멋지다,연진아!
+         짤 생성기</h1>
+      <ImageDisplay text={displayText} />
+      <div className='inputTextBox'>
+        <TextInput  onChange={changeFirstText} text={firstText}/>
+        <TextInput  onChange={changeSecondText} text={secondText}/>
+        </div>
+      <DownloadButton />
     </div>
   );
-}
+};
 
 export default App;
